@@ -14,11 +14,25 @@ int main()
     fflush(stdin);
     fgets(nombre, 30, stdin);
 
-    printf("Ingrese la cantidad inicial en stock: ");
-    scanf("%d", &stock);
+    do
+    {
+        printf("Ingrese la cantidad inicial en stock: ");
+        scanf("%d", &stock);
+        if (stock <= 0)
+        {
+            printf("El stock debe ser mayor a 0. Vuelva a ingresar la cantidad\n");
+        }
+    } while (stock <= 0);
 
-    printf("Ingrese el precio unitario del producto: ");
-    scanf("%f", &precio);
+    do
+    {
+        printf("Ingrese el precio unitario del producto: ");
+        scanf("%f", &precio);
+        if (precio <= 0)
+        {
+            printf("El precio debe ser mayor a 0. Vuelva a ingresar la cantidad\n");
+        }
+    } while (precio <= 0);
 
     do
     {
@@ -39,15 +53,36 @@ int main()
             scanf("%d", &id);
 
             printf("Ingrese el nombre del producto: ");
+            fflush(stdin);
             fgets(nombre, 30, stdin);
 
-            printf("Ingrese la cantidad inicial en stock: ");
-            scanf("%d", &stock);
-
-            printf("Ingrese el precio unitario del producto: ");
-            scanf("%f", &precio);
+            do
+            {
+                printf("Ingrese la cantidad inicial en stock: ");   
+                scanf("%d", &stock);
+                if (stock <= 0)
+                {
+                    printf("El stock debe ser mayor a 0. Vuelva a ingresar la cantidad\n");
+                }
+            } while (stock <= 0);
+        
+            do
+            {
+                printf("Ingrese el precio unitario del producto: ");
+                scanf("%f", &precio);
+                if (precio <= 0)
+                {
+                    printf("El precio debe ser mayor a 0. Vuelva a ingresar la cantidad\n");
+                }
+            } while (precio <= 0);
+        
             break;
         case 2:
+            if (stock <= 0)
+            {
+                printf("El stock actual del producto es de 0 unidades, por favor reabastecer el producto\n");
+                break;
+            }
             do
             {
                 printf("Ingrese la cantidad a vender: ");
@@ -60,17 +95,28 @@ int main()
                 {
                     printf("No existe la cantidad necesaria para esta venta. Vuelva a ingresar la cantidad. \n");
                 }
+
             } while (cantidad < 1 || cantidad > stock);
-            venta=cantidad*precio;
-            printf("El total de la venta es %.2f\n",venta);
-            total_ganancias+=venta;
-            stock-=cantidad;
+            venta = cantidad * precio;
+            printf("El total de la venta es %.2f\n", venta);
+            total_ganancias += venta;
+            stock -= cantidad;
             break;
 
         case 3:
-            printf("Ingrese la cantidad a agregar al stock: ");
-            scanf("%d", &cantidad);
+            do
+            {
+                printf("Ingrese la cantidad a agregar al stock: ");
+                scanf("%d", &cantidad);
+                if (cantidad <=0)
+                {
+                    printf("La cantidad debe ser mayor a 0. Vuelva a ingresar la cantidad. \n");
+                }
+                
+            } while (cantidad <= 0);
 
+            stock += cantidad;
+            printf("el stock actual ahora es de %d\n", stock);
             break;
 
         case 4:
