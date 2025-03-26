@@ -3,7 +3,7 @@
 int main()
 {
     int id, stock=0, cantidad, opcion;
-    float precio, total_ganancias = 0, venta;
+    float precio, total_ganancias = 0, venta,descuento;
     char nombre[30];
     do
     {
@@ -76,7 +76,24 @@ int main()
                 }
 
             } while (cantidad < 1 || cantidad > stock);
-            venta = cantidad * precio;
+            do
+            {
+                printf("Ingrese la cantidad de descuento que desea: ");
+                fflush(stdin);
+                scanf("%f", &descuento);
+                if (descuento < 1||descuento > 100)
+                {
+                    printf("Cantidad de descuento no valida.\n");
+                }
+            } while (descuento < 1||descuento > 100);
+            if(descuento==0){
+                venta = cantidad * precio;
+            }
+            if(descuento>1){
+                venta = cantidad * precio;
+                descuento = venta * (descuento/100);
+                venta = venta - descuento;
+            }
             printf("El total de la venta es %.2f\n", venta);
             total_ganancias += venta;
             stock -= cantidad;
