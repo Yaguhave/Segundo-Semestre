@@ -2,38 +2,9 @@
 
 int main()
 {
-    int id, stock, cantidad, opcion;
+    int id, stock=0, cantidad, opcion;
     float precio, total_ganancias = 0, venta;
     char nombre[30];
-
-    // Registro del producto
-    printf("Ingrese el ID del producto: ");
-    scanf("%d", &id);
-
-    printf("Ingrese el nombre del producto: ");
-    fflush(stdin);
-    fgets(nombre, 30, stdin);
-
-    do
-    {
-        printf("Ingrese la cantidad inicial en stock: ");
-        scanf("%d", &stock);
-        if (stock <= 0)
-        {
-            printf("El stock debe ser mayor a 0. Vuelva a ingresar la cantidad\n");
-        }
-    } while (stock <= 0);
-
-    do
-    {
-        printf("Ingrese el precio unitario del producto: ");
-        scanf("%f", &precio);
-        if (precio <= 0)
-        {
-            printf("El precio debe ser mayor a 0. Vuelva a ingresar la cantidad\n");
-        }
-    } while (precio <= 0);
-
     do
     {
         printf("\nMenu\n");
@@ -49,13 +20,17 @@ int main()
         switch (opcion)
         {
         case 1:
-            printf("Ingrese el ID del producto: ");
-            scanf("%d", &id);
-
+            do{
+                printf("Ingrese el ID del producto: ");
+                scanf("%d", &id);
+                if(id<=0){
+                    printf("Id de producto no valido.\n");
+                }
+            }while(id<=0);
             printf("Ingrese el nombre del producto: ");
             fflush(stdin);
             fgets(nombre, 30, stdin);
-
+            
             do
             {
                 printf("Ingrese la cantidad inicial en stock: ");   
@@ -104,6 +79,10 @@ int main()
             break;
 
         case 3:
+            if(precio<=0){
+                printf("\nPor favor primero registrar el producto.\n");
+                break;
+            }
             do
             {
                 printf("Ingrese la cantidad a agregar al stock: ");
@@ -120,6 +99,10 @@ int main()
             break;
 
         case 4:
+            if(precio<=0){
+                printf("\nPor favor primero registrar el producto.\n");
+                break;
+            }
             printf("\nInformación del producto:\n");
             printf("ID: %d\n", id);
             printf("Nombre: %s", nombre);
@@ -128,6 +111,10 @@ int main()
             break;
 
         case 5:
+            if(precio<=0){
+                printf("\nPor favor primero registrar el producto.\n");
+                break;
+            }
             printf("Total de ganancias: $%.2f\n", total_ganancias);
             break;
 
