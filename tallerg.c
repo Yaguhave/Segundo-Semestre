@@ -15,6 +15,7 @@ int main()
         printf("5. Mostrar total de ganancias\n");
         printf("6. Salir\n");
         printf("Seleccione una opcion: ");
+        fflush(stdin);
         scanf("%d", &opcion);
 
         switch (opcion)
@@ -34,20 +35,22 @@ int main()
             do
             {
                 printf("Ingrese la cantidad inicial en stock: ");   
+                fflush(stdin);
                 scanf("%d", &stock);
                 if (stock <= 0)
                 {
-                    printf("El stock debe ser mayor a 0. Vuelva a ingresar la cantidad\n");
+                    printf("Stock Invalido.\n");
                 }
             } while (stock <= 0);
         
             do
             {
                 printf("Ingrese el precio unitario del producto: ");
+                fflush(stdin);
                 scanf("%f", &precio);
                 if (precio <= 0)
                 {
-                    printf("El precio debe ser mayor a 0. Vuelva a ingresar la cantidad\n");
+                    printf("Precio Invalido.\n");
                 }
             } while (precio <= 0);
         
@@ -61,6 +64,7 @@ int main()
             do
             {
                 printf("Ingrese la cantidad a vender: ");
+                fflush(stdin);
                 scanf("%d", &cantidad);
                 if (cantidad < 1)
                 {
@@ -86,6 +90,7 @@ int main()
             do
             {
                 printf("Ingrese la cantidad a agregar al stock: ");
+                fflush(stdin);
                 scanf("%d", &cantidad);
                 if (cantidad <=0)
                 {
@@ -123,7 +128,7 @@ int main()
             break;
 
         default:
-            printf("Opción inválida. Intente nuevamente.\n");
+            printf("\nOpción inválida. Intente nuevamente.\n");
         }
     } while (opcion != 6);
 
